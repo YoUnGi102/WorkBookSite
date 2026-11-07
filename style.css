@@ -31,7 +31,7 @@ button, input { font: inherit; }
   color: var(--accent);
 }
 .brand-icon svg { width: 1.4rem; }
-main { padding-block: 2rem 3rem; }
+main { padding-block: 2rem 6rem; }
 
 .hero {
   position: relative;
@@ -150,6 +150,62 @@ input::placeholder { color: #586b70; }
 .check-panel p { margin-top: .4rem; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
+.keyboard-help {
+  position: fixed;
+  right: 1rem;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 20;
+}
+.keyboard-help summary {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 2.8rem;
+  padding: .65rem 1rem;
+  border: 1px solid #104e3e;
+  border-radius: .75rem;
+  color: #fff;
+  background: var(--accent);
+  box-shadow: 0 .3rem 1rem #192e3826;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.keyboard-help summary::-webkit-details-marker { display: none; }
+.keyboard-help summary:hover { background: #104e3e; }
+.keyboard-help-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + .65rem);
+  width: min(48rem, calc(100vw - 2rem));
+  max-height: 70vh;
+  max-height: min(42rem, calc(100dvh - 7rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1rem;
+  box-shadow: 0 .5rem 2rem #192e3833;
+}
+.keyboard-help-heading { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+.keyboard-help-heading button { flex: none; color: var(--ink); background: #eff3ef; font-size: 1.3rem; }
+.keyboard-help-panel p { margin-top: .5rem; color: var(--muted); font-size: .875rem; }
+.keyboard-help-image { display: block; margin-block: .8rem; color: var(--accent); font-size: .875rem; font-weight: 650; }
+.keyboard-help-image img { display: block; width: 100%; height: auto; margin-bottom: .35rem; }
+.keyboard-help-panel h3 { font-size: 1rem; }
+.keyboard-help-keys { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem 1rem; margin-block: .75rem 0; }
+.keyboard-help-keys dt { font-weight: 700; }
+.keyboard-help-keys dd { margin: .2rem 0 0; color: var(--muted); font-size: .875rem; }
+.keyboard-help-keys kbd {
+  display: inline-block;
+  min-width: 1.6rem;
+  padding: .1rem .35rem;
+  border: 1px solid #bbc9c2;
+  border-bottom-width: 3px;
+  border-radius: .3rem;
+  background: #fcfdfb;
+  font: inherit;
+  text-align: center;
+}
+
 @media (max-width: 40rem) {
   .shell { width: min(100% - 1.5rem, 58rem); }
   main { padding-top: 1rem; }
@@ -163,4 +219,5 @@ input::placeholder { color: #586b70; }
 
 @media (max-width: 25rem) {
   .worksheet-heading { align-items: start; flex-direction: column; }
+  .keyboard-help-keys { grid-template-columns: 1fr; }
 }

@@ -73,6 +73,34 @@
     <noscript>Na vytvorenie a kontrolu otázok povoľ JavaScript.</noscript>
   </main>
 
+  <details class="keyboard-help">
+    <summary><span aria-hidden="true">⌨</span> Pomôcka ku klávesnici</summary>
+    <section class="keyboard-help-panel panel" aria-labelledby="keyboard-help-title">
+      <div class="keyboard-help-heading">
+        <h2 id="keyboard-help-title">Slovenská klávesnica</h2>
+        <button id="close-keyboard-help" class="button" type="button" aria-label="Zavrieť pomôcku">×</button>
+      </div>
+      <p>Nájdi kláves na obrázku a potom ho stlač na svojej klávesnici.</p>
+      <a class="keyboard-help-image" href="obrazky/slovenska-klavesnica.png" target="_blank" rel="noopener"
+        aria-label="Zväčšiť obrázok slovenskej klávesnice v novej karte">
+        <img src="obrazky/slovenska-klavesnica.png" width="1201" height="383"
+          alt="Slovenská klávesnica QWERTZ s písmenami, číslami, diakritikou a špeciálnymi znakmi.">
+        <span>Zväčšiť obrázok <span aria-hidden="true">↗</span></span>
+      </a>
+      <h3>Ďalšie dôležité klávesy</h3>
+      <dl class="keyboard-help-keys">
+        <div><dt><kbd>Medzerník</kbd></dt><dd>Medzera medzi slovami.</dd></div>
+        <div><dt><kbd>Enter</kbd></dt><dd>Nový riadok.</dd></div>
+        <div><dt><kbd>Backspace</kbd> <span aria-hidden="true">⌫</span></dt><dd>Vymaže písmeno vľavo od kurzora.</dd></div>
+        <div><dt><kbd>Delete</kbd></dt><dd>Vymaže písmeno vpravo od kurzora.</dd></div>
+        <div><dt><kbd>Shift</kbd> <span aria-hidden="true">⇧</span></dt><dd>Podrž ho pri písaní veľkého písmena.</dd></div>
+        <div><dt><kbd>Caps Lock</kbd></dt><dd>Zapne alebo vypne písanie veľkých písmen.</dd></div>
+        <div><dt><kbd aria-label="Šípka hore">↑</kbd> <kbd aria-label="Šípka dole">↓</kbd>
+          <kbd aria-label="Šípka doľava">←</kbd> <kbd aria-label="Šípka doprava">→</kbd></dt><dd>Pohyb kurzora v smere šípky.</dd></div>
+      </dl>
+    </section>
+  </details>
+
   <template id="question-template">
     <li class="question panel">
       <span class="question-number" aria-hidden="true"></span>

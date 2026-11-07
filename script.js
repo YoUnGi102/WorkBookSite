@@ -373,3 +373,18 @@ answersForm.addEventListener("submit", event => {
 
 // Po otvorení stránky sa zobrazí ukážkový pracovný list.
 renderQuestions(generateQuestions(seedInput.value, countInput.valueAsNumber));
+
+const keyboardHelp = document.querySelector(".keyboard-help");
+
+function closeKeyboardHelp() {
+  keyboardHelp.open = false;
+  keyboardHelp.querySelector("summary").focus();
+}
+
+document.querySelector("#close-keyboard-help").addEventListener("click", closeKeyboardHelp);
+keyboardHelp.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closeKeyboardHelp();
+  }
+});
