@@ -104,6 +104,10 @@ function generateQuestions(seed, count) {
         prompt: "Prepíš celú vetu. Písmeno v zátvorke napíš " + item.target + ".",
       })),
     ],
+    keyboardQuiz.map(item => ({
+      ...item,
+      type: "Malý kvíz o klávesnici",
+    })),
   ];
 
   // Z každej skupiny vyberieme jednu otázku, kým sa nenaplní zadaný počet.
@@ -198,6 +202,38 @@ function prepareDeletionInput(input, question, hint, resetButton) {
   return deletion;
 }
 
+function prepareKeyboardQuiz(input, question, hint) {
+  const quiz = { keys: question.keys, pressedKey: null };
+  const keyNames = {
+    " ": "Medzerník",
+    Backspace: "Backspace",
+    Delete: "Delete",
+    Enter: "Enter",
+    Shift: "Shift",
+    CapsLock: "Caps Lock",
+    ArrowUp: "Šípka hore",
+    ArrowDown: "Šípka dole",
+    ArrowLeft: "Šípka doľava",
+    ArrowRight: "Šípka doprava",
+    Escape: "Escape",
+    Unidentified: "Nerozpoznaný kláves",
+  };
+  input.readOnly = true;
+  input.placeholder = "Klikni sem a stlač kláves";
+  hint.textContent = "Odpovedz stlačením klávesu v tomto poli. Na ďalšie pole sa presuň klávesom Tab.";
+  hint.hidden = false;
+
+  input.addEventListener("keydown", event => {
+    // Tab a klávesové skratky ostávajú dostupné na pohyb a ovládanie prehliadača.
+    if (event.key === "Tab" || event.ctrlKey || event.metaKey || event.altKey || event.isComposing) return;
+    event.preventDefault();
+    quiz.pressedKey = event.key;
+    input.value = keyNames[event.key] || event.key;
+    updateAnswers();
+  });
+  return quiz;
+}
+
 function renderQuestions(questions) {
   questionList.replaceChildren();
   questionRows = questions.map((question, index) => {
@@ -238,14 +274,18 @@ function renderQuestions(questions) {
     feedback.id = "vysledok-" + number;
     descriptions.push(feedback.id);
     let deletion = null;
-    if (question.expectedKey) {
+    let quiz = null;
+    if (question.expectedKey || question.keys) {
       hint.id = "klaves-" + number;
       descriptions.push(hint.id);
+    }
+    if (question.expectedKey) {
       deletion = prepareDeletionInput(input, question, hint, resetButton);
     }
+    if (question.keys) quiz = prepareKeyboardQuiz(input, question, hint);
     input.setAttribute("aria-describedby", descriptions.join(" "));
     questionList.append(row);
-    return { row, input, feedback, answer: question.answer, deletion };
+    return { row, input, feedback, answer: question.answer, deletion, quiz };
   });
   checked = false;
   results.textContent = resultsHint;
@@ -308,10 +348,12 @@ answersForm.addEventListener("input", updateAnswers);
 answersForm.addEventListener("submit", event => {
   event.preventDefault();
   let correctCount = 0;
-  for (const { row, input, feedback, answer, deletion } of questionRows) {
+  for (const { row, input, feedback, answer, deletion, quiz } of questionRows) {
     const response = input.value.trim().normalize("NFC");
     const correctKeyUsed = !deletion || (deletion.usedCorrectKey && input.value === deletion.previousValue);
-    const correct = response === answer.normalize("NFC") && correctKeyUsed;
+    const correct = quiz
+      ? quiz.keys.includes(quiz.pressedKey)
+      : response === answer.normalize("NFC") && correctKeyUsed;
     row.dataset.result = correct ? "correct" : "incorrect";
     input.setAttribute("aria-invalid", String(!correct));
     if (correct) {

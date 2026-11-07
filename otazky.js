@@ -71,3 +71,32 @@ const countingImages = [
 ];
 
 const specialCharacters = ["@", "&", "*", "#", "+", "%", "/", "="];
+
+// Názvy klávesov v zozname keys zodpovedajú udalosti keydown.
+const keyboardQuiz = [
+  {
+    prompt: "Ktorým tlačidlom urobíme medzeru medzi slovami?",
+    keys: [" "],
+    answer: "Medzerník",
+  },
+  {
+    prompt: "Ktorým tlačidlom vymažeme nesprávne napísané písmeno?",
+    keys: ["Backspace", "Delete"],
+    answer: "Backspace alebo Delete",
+  },
+  {
+    prompt: "Ktorým tlačidlom začneme nový riadok?",
+    keys: ["Enter"],
+    answer: "Enter",
+  },
+  {
+    prompt: "Ktorým tlačidlom píšeme veľké písmená?",
+    keys: ["Shift", "CapsLock"],
+    answer: "Shift alebo Caps Lock",
+  },
+  {
+    prompt: "Ktoré tlačidlá nám umožňujú pohybovať sa hore, dole, doľava a doprava?",
+    keys: ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"],
+    answer: "Šípky hore, dole, doľava a doprava (stačí stlačiť jednu)",
+  },
+];
