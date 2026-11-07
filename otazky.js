@@ -72,31 +72,56 @@ const countingImages = [
 
 const specialCharacters = ["@", "&", "*", "#", "+", "%", "/", "="];
 
-// Názvy klávesov v zozname keys zodpovedajú udalosti keydown.
+// Každá otázka má jeden správny kláves podľa udalosti keydown.
 const keyboardQuiz = [
   {
     prompt: "Ktorým tlačidlom urobíme medzeru medzi slovami?",
-    keys: [" "],
+    quizKey: " ",
     answer: "Medzerník",
   },
   {
-    prompt: "Ktorým tlačidlom vymažeme nesprávne napísané písmeno?",
-    keys: ["Backspace", "Delete"],
-    answer: "Backspace alebo Delete",
+    prompt: "Ktorým tlačidlom vymažeme písmeno vľavo od kurzora?",
+    quizKey: "Backspace",
+    answer: "Backspace",
+  },
+  {
+    prompt: "Ktorým tlačidlom vymažeme písmeno vpravo od kurzora?",
+    quizKey: "Delete",
+    answer: "Delete",
   },
   {
     prompt: "Ktorým tlačidlom začneme nový riadok?",
-    keys: ["Enter"],
+    quizKey: "Enter",
     answer: "Enter",
   },
   {
-    prompt: "Ktorým tlačidlom píšeme veľké písmená?",
-    keys: ["Shift", "CapsLock"],
-    answer: "Shift alebo Caps Lock",
+    prompt: "Ktorý kláves držíme, keď chceme napísať jedno veľké písmeno?",
+    quizKey: "Shift",
+    answer: "Shift",
   },
   {
-    prompt: "Ktoré tlačidlá nám umožňujú pohybovať sa hore, dole, doľava a doprava?",
-    keys: ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"],
-    answer: "Šípky hore, dole, doľava a doprava (stačí stlačiť jednu)",
+    prompt: "Ktorým tlačidlom zapneme písanie veľkých písmen bez jeho držania?",
+    quizKey: "CapsLock",
+    answer: "Caps Lock",
+  },
+  {
+    prompt: "Ktorým tlačidlom posunieme kurzor hore?",
+    quizKey: "ArrowUp",
+    answer: "Šípka hore",
+  },
+  {
+    prompt: "Ktorým tlačidlom posunieme kurzor dole?",
+    quizKey: "ArrowDown",
+    answer: "Šípka dole",
+  },
+  {
+    prompt: "Ktorým tlačidlom posunieme kurzor doľava?",
+    quizKey: "ArrowLeft",
+    answer: "Šípka doľava",
+  },
+  {
+    prompt: "Ktorým tlačidlom posunieme kurzor doprava?",
+    quizKey: "ArrowRight",
+    answer: "Šípka doprava",
   },
 ];

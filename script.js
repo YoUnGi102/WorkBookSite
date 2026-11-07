@@ -203,7 +203,7 @@ function prepareDeletionInput(input, question, hint, resetButton) {
 }
 
 function prepareKeyboardQuiz(input, question, hint) {
-  const quiz = { keys: question.keys, pressedKey: null };
+  const quiz = { expectedKey: question.quizKey, pressedKey: null };
   const keyNames = {
     " ": "Medzerník",
     Backspace: "Backspace",
@@ -275,14 +275,14 @@ function renderQuestions(questions) {
     descriptions.push(feedback.id);
     let deletion = null;
     let quiz = null;
-    if (question.expectedKey || question.keys) {
+    if (question.expectedKey || question.quizKey) {
       hint.id = "klaves-" + number;
       descriptions.push(hint.id);
     }
     if (question.expectedKey) {
       deletion = prepareDeletionInput(input, question, hint, resetButton);
     }
-    if (question.keys) quiz = prepareKeyboardQuiz(input, question, hint);
+    if (question.quizKey) quiz = prepareKeyboardQuiz(input, question, hint);
     input.setAttribute("aria-describedby", descriptions.join(" "));
     questionList.append(row);
     return { row, input, feedback, answer: question.answer, deletion, quiz };
@@ -352,7 +352,7 @@ answersForm.addEventListener("submit", event => {
     const response = input.value.trim().normalize("NFC");
     const correctKeyUsed = !deletion || (deletion.usedCorrectKey && input.value === deletion.previousValue);
     const correct = quiz
-      ? quiz.keys.includes(quiz.pressedKey)
+      ? quiz.pressedKey === quiz.expectedKey
       : response === answer.normalize("NFC") && correctKeyUsed;
     row.dataset.result = correct ? "correct" : "incorrect";
     input.setAttribute("aria-invalid", String(!correct));
