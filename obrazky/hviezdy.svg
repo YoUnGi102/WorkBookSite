@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 145">
+  <defs>
+    <path id="hviezda" d="m0-21 6.2 13.4 14.7 1.8-10.8 10.1 2.8 14.5L0 11.6l-12.9 7.2 2.8-14.5L-21-5.8l14.7-1.8Z" fill="#ffd980" stroke="#dca652" stroke-width="1.6" stroke-linejoin="round"/>
+    <path id="mesiac" d="M6-21A21 21 0 1 0 19 11 20 20 0 0 1 6-21Z" fill="#dbd9f8" stroke="#b9b7e1" stroke-width="1.6" stroke-linejoin="round"/>
+  </defs>
+  <rect width="360" height="145" rx="14" fill="#26385c"/>
+  <use href="#hviezda" transform="translate(37 89) rotate(-8)"/>
+  <use href="#mesiac" transform="translate(78 49) rotate(9)"/>
+  <use href="#hviezda" transform="translate(121 95) rotate(11)"/>
+  <use href="#hviezda" transform="translate(167 47) rotate(-11)"/>
+  <use href="#hviezda" transform="translate(216 88) rotate(7)"/>
+  <use href="#mesiac" transform="translate(269 56) rotate(-15)"/>
+  <use href="#hviezda" transform="translate(319 95) rotate(6)"/>
+</svg>

@@ -1,0 +1,166 @@
+:root {
+  color-scheme: light;
+  --paper: #f5f5ef;
+  --white: #fff;
+  --ink: #192e38;
+  --muted: #52656b;
+  --line: #dce4de;
+  --accent: #176451;
+  --mint: #dff1e7;
+  font-family: system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; line-height: 1.5; }
+h1, h2, h3, p { margin: 0; }
+button, input { font: inherit; }
+
+.shell { width: min(100% - 3rem, 58rem); margin-inline: auto; }
+.site-header { background: var(--white); border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: .7rem; padding-block: .85rem; font-weight: 750; }
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: .65rem;
+  background: var(--mint);
+  color: var(--accent);
+}
+.brand-icon svg { width: 1.4rem; }
+main { padding-block: 2rem 3rem; }
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 13rem;
+  align-items: center;
+  gap: 1.25rem;
+  overflow: hidden;
+  padding: clamp(1.6rem, 4vw, 2.75rem);
+  border-radius: 1.35rem;
+  color: #fff;
+  background: radial-gradient(ellipse at 95% 100%, #20574f, transparent 68%), #18313b;
+}
+.eyebrow {
+  color: #b3e8cb;
+  font-size: .75rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.hero h1 { margin-block: .35rem .6rem; font-size: clamp(2rem, 5vw, 3.35rem); line-height: 1.06; letter-spacing: -.045em; }
+.hero p:last-child { max-width: 35ch; color: #e1ece7; }
+.hero-keys { position: relative; height: 8.3rem; }
+.key {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.1rem;
+  border-radius: .8rem;
+  color: #18313b;
+  font-size: 2rem;
+  font-weight: 750;
+  box-shadow: inset 0 1px #ffffffb0, 0 .35rem #0004, 0 .65rem 1.4rem #0004;
+}
+.key-first { top: 1rem; left: .25rem; background: #c5edda; transform: rotate(-12deg); }
+.key-second { top: 3.55rem; left: 4.55rem; background: #f7e2a6; transform: rotate(7deg); }
+.key-third { top: .75rem; right: .1rem; background: #e3dcf9; transform: rotate(13deg); }
+
+.panel { border: 1px solid var(--line); border-radius: 1rem; background: var(--white); }
+.setup { margin-top: 1.25rem; padding: 1.3rem 1.5rem; }
+h2 { display: flex; align-items: center; gap: .65rem; font-size: 1.2rem; line-height: 1.25; }
+.step, .question-number {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: .48rem;
+  color: var(--accent);
+  background: var(--mint);
+  font-size: .85rem;
+  font-weight: 750;
+}
+#setup-form { display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: .8rem; margin-top: 1rem; }
+.field label { display: block; margin-bottom: .3rem; font-size: .875rem; font-weight: 650; }
+input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.8rem;
+  padding: .55rem .75rem;
+  border: 1px solid #bbc9c2;
+  border-radius: .55rem;
+  color: var(--ink);
+  background: #fcfdfb;
+}
+input::placeholder { color: #586b70; }
+:focus-visible { outline: 3px solid #137a66; outline-offset: 3px; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  min-height: 2.8rem;
+  padding: .55rem 1rem;
+  border: 1px solid transparent;
+  border-radius: .55rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.button-primary { color: #fff; background: var(--accent); }
+.button-primary:hover { background: #104e3e; }
+.setup-note, .progress-text, .check-panel p { color: var(--muted); font-size: .875rem; }
+.setup-note { margin-top: .75rem; }
+#setup-error:not(:empty) { margin-top: .65rem; color: #8f352b; font-weight: 650; }
+
+.worksheet { margin-top: 1.9rem; }
+.worksheet-heading { display: flex; justify-content: space-between; align-items: center; gap: .65rem; margin-bottom: .8rem; }
+.progress-text { padding: .25rem .65rem; border: 1px solid var(--line); border-radius: 2rem; background: #fff; }
+.question-list { display: grid; gap: .65rem; margin: 0; padding: 0; list-style: none; }
+.question { display: flex; gap: .8rem; padding: 1rem 1.25rem; }
+.question-number { color: var(--muted); background: #eff3ef; }
+.question-body { min-width: 0; flex: 1; }
+.question-type { margin-bottom: .2rem; color: var(--accent); font-size: .72rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+.question h3 { font-size: 1rem; }
+.question-example {
+  width: fit-content;
+  margin-top: .55rem;
+  padding: .28rem .65rem;
+  border-radius: .42rem;
+  background: #eef2ee;
+  font-size: 1.05rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.count-picture { display: block; width: min(100%, 23rem); height: auto; margin-top: .65rem; border-radius: .65rem; }
+.answer { display: block; width: min(100%, 25rem); margin-top: .7rem; }
+.key-hint { margin-top: .4rem; color: var(--muted); font-size: .875rem; }
+.reset-word { margin-top: .5rem; color: var(--accent); background: var(--mint); }
+.reset-word:hover { background: #cce6d8; }
+.question[data-result="correct"] { border-color: #93c6ad; }
+.question[data-result="incorrect"] { border-color: #d8aba5; }
+.feedback { margin-top: .45rem; color: var(--accent); font-weight: 650; overflow-wrap: anywhere; }
+.question[data-result="incorrect"] .feedback { color: #8f352b; }
+.check-panel { display: flex; justify-content: space-between; align-items: center; gap: .85rem; margin-top: 1rem; padding: 1rem 1.25rem; }
+.check-panel p { margin-top: .4rem; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (max-width: 40rem) {
+  .shell { width: min(100% - 1.5rem, 58rem); }
+  main { padding-top: 1rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-keys { display: none; }
+  .setup, .question, .check-panel { padding: 1rem; }
+  #setup-form { grid-template-columns: 1fr 1fr; }
+  #setup-form button { grid-column: 1 / -1; }
+  .check-panel { align-items: stretch; flex-direction: column; }
+}
+
+@media (max-width: 25rem) {
+  .worksheet-heading { align-items: start; flex-direction: column; }
+}

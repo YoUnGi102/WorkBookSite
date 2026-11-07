@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 145">
+  <defs>
+    <g id="jablko">
+      <path d="M0-12C-22-26-29 4-15 17c5 5 11 3 15 1 4 2 10 4 15-1C29 4 22-26 0-12Z" fill="#e87665" stroke="#8f423e" stroke-width="2"/>
+      <path d="M0-11q2-11-3-15" fill="none" stroke="#6c4840" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M1-17q4-12 15-7-4 9-15 7Z" fill="#4d8566"/>
+    </g>
+    <g id="hruska">
+      <path d="M0-17c-11 0-8 11-15 18-8 8-5 22 15 22S23 9 15 1C8-6 11-17 0-17Z" fill="#ecc86a" stroke="#936427" stroke-width="2"/>
+      <path d="M0-17q-1-6 4-10" fill="none" stroke="#6c4840" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <rect width="360" height="145" rx="14" fill="#fbefe0"/>
+  <path d="M25 118H335" stroke="#ead7c0" stroke-width="2" stroke-linecap="round"/>
+  <use href="#jablko" transform="translate(45 77) rotate(-12)"/>
+  <use href="#hruska" transform="translate(99 83) rotate(10)"/>
+  <use href="#jablko" transform="translate(151 69) rotate(8)"/>
+  <use href="#jablko" transform="translate(206 84) rotate(-7)"/>
+  <use href="#hruska" transform="translate(259 73) rotate(-9)"/>
+  <use href="#jablko" transform="translate(315 80) rotate(12)"/>
+</svg>

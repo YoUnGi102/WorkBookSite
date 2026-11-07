@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Precvič si písanie, slovenské znamienka a prácu s klávesnicou.">
+  <title>Betkin pracovný list</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="otazky.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell brand">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+          <rect x="2.5" y="5.5" width="19" height="13" rx="3"/>
+          <path d="M6.5 9.5h.1m3.5 0h.1m3.5 0h.1m3.5 0h.1M6.5 13h.1m3.4 1.5h5m2.9-1.5h.1"/>
+        </svg>
+      </span>
+      <span>Betkin pracovný list</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Cvičenia na klávesnici</p>
+        <h1 id="page-title">Precvič si písanie</h1>
+        <p>Dopĺňaj písmená, opravuj vety a vyskúšaj si aj špeciálne znaky.</p>
+      </div>
+      <div class="hero-keys" aria-hidden="true">
+        <span class="key key-first">á</span>
+        <span class="key key-second">č</span>
+        <span class="key key-third">?</span>
+      </div>
+    </section>
+
+    <section class="setup panel" aria-labelledby="setup-title">
+      <h2 id="setup-title"><span class="step" aria-hidden="true">1</span> Nastav pracovný list</h2>
+      <form id="setup-form" novalidate>
+        <div class="field">
+          <label for="seed">Číslo zadania</label>
+          <input id="seed" type="text" inputmode="numeric" value="1234" required aria-describedby="setup-error">
+        </div>
+        <div class="field">
+          <label for="count">Počet otázok</label>
+          <input id="count" type="number" min="1" max="30" step="1" value="7" required aria-describedby="setup-error">
+        </div>
+        <button class="button button-primary" type="submit">Vytvoriť otázky <span aria-hidden="true">→</span></button>
+      </form>
+      <p id="setup-error" role="alert"></p>
+      <p class="setup-note">Rovnaké číslo zadania a rovnaký počet vytvoria tie isté otázky. Pri siedmich a viacerých otázkach je posledná bonusová.</p>
+      <p id="setup-status" class="visually-hidden" role="status"></p>
+    </section>
+
+    <section class="worksheet" aria-labelledby="worksheet-title" hidden>
+      <div class="worksheet-heading">
+        <h2 id="worksheet-title" tabindex="-1"><span class="step" aria-hidden="true">2</span> Vyrieš otázky</h2>
+        <p id="progress-text" class="progress-text"></p>
+      </div>
+      <form id="answers-form">
+        <ol id="question-list" class="question-list"></ol>
+        <div class="check-panel panel">
+          <div>
+            <h2><span class="step" aria-hidden="true">3</span> Skontroluj odpovede</h2>
+            <p id="results" role="status">Po kontrole uvidíš výsledok pri každej otázke.</p>
+          </div>
+          <button class="button button-primary" type="submit"><span aria-hidden="true">✓</span> Skontrolovať odpovede</button>
+        </div>
+      </form>
+    </section>
+    <noscript>Na vytvorenie a kontrolu otázok povoľ JavaScript.</noscript>
+  </main>
+
+  <template id="question-template">
+    <li class="question panel">
+      <span class="question-number" aria-hidden="true"></span>
+      <div class="question-body">
+        <p class="question-type"></p>
+        <h3 class="question-prompt"></h3>
+        <p class="question-example" hidden></p>
+        <img class="count-picture" hidden>
+        <label class="answer-label visually-hidden"></label>
+        <input class="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+          placeholder="Napíš odpoveď">
+        <p class="key-hint" role="status" hidden></p>
+        <button class="button reset-word" type="button" hidden>Obnoviť slovo</button>
+        <p class="feedback" hidden></p>
+      </div>
+    </li>
+  </template>
+</body>
+</html>
